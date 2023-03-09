@@ -9,6 +9,7 @@
     <Grid>
         <Button x:Name="boton" Content="Button" HorizontalAlignment="Left" Margin="394,306,0,0" VerticalAlignment="Top" Click="boton_Click"/>
         <ListBox x:Name="listaJugadores" HorizontalAlignment="Left" Height="187" Margin="303,52,0,0" VerticalAlignment="Top" Width="183" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Label Content="EQUIPOS" HorizontalAlignment="Left" Margin="327,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
