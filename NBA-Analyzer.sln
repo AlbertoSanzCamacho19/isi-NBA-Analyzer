@@ -5,6 +5,11 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBA-Analyzer", "NBA-Analyzer.csproj", "{781F60C2-AE55-4134-B61D-4225A1A223A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{80E92796-F38C-4804-95BE-671592267C8C}"
+	ProjectSection(SolutionItems) = preProject
+		API\diseño.png = API\diseño.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

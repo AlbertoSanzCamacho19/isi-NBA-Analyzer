@@ -96,9 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="API\DBApi.cs" />
-    <Compile Include="API\Jugador.cs" />
-    <Compile Include="API\Team.cs" />
+    <Compile Include="API2\Fotos.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,6 +107,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API2\DBApi.cs" />
+    <Compile Include="API2\Jugador.cs" />
+    <Compile Include="API2\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -135,5 +136,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="diseño.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

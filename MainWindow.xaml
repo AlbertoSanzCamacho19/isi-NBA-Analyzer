@@ -9,7 +9,11 @@
     <Grid>
         <Button x:Name="boton" Content="Button" HorizontalAlignment="Left" Margin="394,306,0,0" VerticalAlignment="Top" Click="boton_Click"/>
         <ListBox x:Name="listaJugadores" HorizontalAlignment="Left" Height="187" Margin="303,52,0,0" VerticalAlignment="Top" Width="183" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Label Content="EQUIPOS" HorizontalAlignment="Left" Margin="327,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="equpis" Content="EQUIPOS" HorizontalAlignment="Left" Margin="327,10,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="imagen" HorizontalAlignment="Left" Height="125" Margin="607,122,0,0" VerticalAlignment="Top" Width="170" Stretch="Fill" Source="{Binding Path=url}"  >
+
+        </Image>
+        <Button x:Name="boton2" Content="Button" HorizontalAlignment="Left" Margin="637,296,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
