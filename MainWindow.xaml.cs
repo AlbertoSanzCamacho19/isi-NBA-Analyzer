@@ -21,6 +21,9 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using static System.Net.WebRequestMethods;
 using NBA_Analyzer.API2;
+using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace NBA_Analyzer
 {
@@ -29,28 +32,39 @@ namespace NBA_Analyzer
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<Team> lista_equipos=new List<Team>();
+        public List<Jugador> lista_jugadores=new List<Jugador>();
         static HttpClient client = new HttpClient();
+
+
+
         public MainWindow()
         {
             InitializeComponent();
 
-            using (var client = new HttpClient())
-            {
-                string url2 = "https://image-charts.com/chart.js/2.8.0?bkg=white&c=";
-                client.DefaultRequestHeaders.Clear();
-                string data = "[ 23, 64, 21, 53, -39, -30, 28, -10]";
-                string prametros = "{  \"type\": \"line\", \"data\": {   \"labels\": [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\"],    \"datasets\": [      {        \"backgroundColor\": \"rgba(255,150,150,0.5)\",       \"borderColor\": \"rgb(255,150,150)\",       \"data\": "+data+",        \"label\": \"Dataset\",       \"fill\": \"origin\"      }    ]  }}";
-                dynamic jsonString = JObject.Parse(prametros);
-                Fotos fotos = new Fotos();
-                var httpContent = new StringContent(jsonString.ToString(), Encoding.UTF8);
-                fotos.url= url2 + "" + jsonString;
-                
-                DataContext = fotos;
-            }
+            pedirEquipos();
+            pedirJugadores();
+
+
 
         }
 
-        private void boton_Click(object sender, RoutedEventArgs e)
+       
+
+        private System.Windows.Controls.UserControl activeWindow = null;
+
+        public void OpenControl(UserControl cont)
+        {
+            if (activeWindow != null)
+            {
+                ventana.Children.Clear();
+            }
+            activeWindow = cont;
+            ventana.Children.Add(cont);
+        }
+
+        public void pedirEquipos()
         {
             using (var client = new HttpClient())
             {
@@ -62,32 +76,82 @@ namespace NBA_Analyzer
 
                 var res = response.Content.ReadAsStringAsync().Result;
                 dynamic r = JObject.Parse(res);
-                foreach(var equipo in r.data)
+                foreach (var team in r.data)
                 {
-                    listaJugadores.Items.Add(equipo.full_name);
+                    string eid = team.id;
+                    string eabb = team.abbreviation;
+                    string eci = team.city;
+                    string eco = team.conference;
+                    string edi = team.division;
+                    string efu = team.full_name;
+                    string ena = team.name;
+
+                    Team equipo = new Team(eid, eabb, eci, eco, edi, efu, ena);
+                    lista_equipos.Add(equipo);
                 }
-                
+
 
             }
+
         }
 
-        private void boton2_Click(object sender, RoutedEventArgs e)
+
+
+
+        public void pedirJugadores()
         {
-            using (var client = new HttpClient())
-            {
-                string url2 = "https://image-charts.com/chart";
-                client.DefaultRequestHeaders.Clear();
-                string prametros = "{  \"type\": \"line\"  \"data\": {  \"labels\": [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\"],  \"datasets\": [ { \"backgroundColor\": \"rgba(255,150,150,0.5)\",    \"borderColor\": \"rgb(255,150,150)\",   \"data\": [-23, 64, 21, 53, -39, -30, 28, -10], \"label\": \"Dataset\",        \"fill\": \"origin\" }    ]  }}";
-                dynamic jsonString=JObject.Parse(prametros);
-                Fotos fotos = new Fotos();
-                var httpContent=new StringContent(jsonString.ToString(),Encoding.UTF8);
-                fotos.url = "https://image-charts.com/chart.js/2.8.0?bkg=white&c={type:'line',data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],datasets:[{backgroundColor:'rgba(255,150,150,0.5)',borderColor:'rgb(255,150,150)',data:[-23,64,21,53,-39,-30,28,-10],label:'Dataset',fill:'origin'}]}}";
-          
-                DataContext = fotos;
-            }
+            Team equipo=new Team("","","","","","","");
+                using (var client = new HttpClient())
+                {
+                    for (int i = 1; i < 3; i++)
+                    {
+                        string url = "https://www.balldontlie.io/api/v1/players?per_page=100&page=" + i;
+
+
+
+                        var response = client.GetAsync(url).Result;
+
+                        var res = response.Content.ReadAsStringAsync().Result;
+                        dynamic r = JObject.Parse(res);
+                        foreach (var jugador in r.data)
+                        {
+                            foreach (Team team in lista_equipos)
+                        {
+                            string id = jugador.team.id;
+                            if (team.id == id)
+                                equipo = team;
+                        }
+                            
+
+                        string jid = jugador.id;
+                        string jfi = jugador.first_name;
+                        string jla=jugador.last_name;
+                        string jpo = jugador.posicion;
+                        Int32 jhef = 0;
+                        Int32 jhei = 0;
+                        Int32 jwe = 0;
+                        try
+                        {
+                            jhef = jugador.heigth_feet;
+                            jhei = jugador.heigth_inches;
+                            jhef = jugador.weigth_pounds;
+                        }catch
+                        {
+
+                        }
+
+                            Jugador jugador1 = new Jugador(jid,jfi,jla,jpo,jhef,jhei,jwe, equipo);
+                            lista_jugadores.Add(jugador1);
+
+                        }
+                    }
+                }
+            
         }
 
-
-
+        private void Jugadores_Click(object sender, RoutedEventArgs e)
+        {
+            OpenControl(new equipos(lista_jugadores, lista_equipos));
+        }
     }
 }

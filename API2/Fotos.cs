@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace NBA_Analyzer.API2
 {
-    internal class Fotos
+    public class Fotos
     {
         public String url { get; set; }
+        public string url2 { get; set; }
     }
 }

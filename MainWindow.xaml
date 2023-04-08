@@ -7,13 +7,42 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="boton" Content="Button" HorizontalAlignment="Left" Margin="394,306,0,0" VerticalAlignment="Top" Click="boton_Click"/>
-        <ListBox x:Name="listaJugadores" HorizontalAlignment="Left" Height="187" Margin="303,52,0,0" VerticalAlignment="Top" Width="183" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Label x:Name="equpis" Content="EQUIPOS" HorizontalAlignment="Left" Margin="327,10,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="imagen" HorizontalAlignment="Left" Height="125" Margin="607,122,0,0" VerticalAlignment="Top" Width="170" Stretch="Fill" Source="{Binding Path=url}"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="181*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/fondo naranja.jpg" Stretch="Fill" Grid.ColumnSpan="6" Grid.RowSpan="2"/>
 
-        </Image>
-        <Button x:Name="boton2" Content="Button" HorizontalAlignment="Left" Margin="637,296,0,0" VerticalAlignment="Top"/>
+        <DockPanel x:Name="ventana" LastChildFill="False" Grid.Row="1" Grid.ColumnSpan="6"/>
+        <Button x:Name="Inicio" Grid.Column="1" Content="Inicio" Margin="20,20,20,20" BorderBrush="Black" Foreground="White" FontSize="20" >
+            <Button.Background>
+                <ImageBrush ImageSource="/balon.jpg" TileMode="Tile"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Jugadores" Grid.Column="2" Content="Jugadores" Margin="20,20,20,20" FontSize="20" SnapsToDevicePixels="True" Foreground="White" Click="Jugadores_Click" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/balon.jpg" TileMode="Tile"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="vs_Equipos" Grid.Column="3" Content="VS Equipos" Foreground="White" Margin="20,20,20,20" FontSize="20" BorderBrush="Black" OpacityMask="#FFDCC9C9">
+            <Button.Background>
+                <ImageBrush ImageSource="/balon.jpg" TileMode="FlipX" Stretch="Fill"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="vs_jugadores" Grid.Column="4" Content="VS_Jugadores" Margin="20,20,20,20" Foreground="White" BorderBrush="Black" FontSize="20">
+            <Button.Background>
+                <ImageBrush TileMode="Tile" ImageSource="/balon.jpg"/>
+            </Button.Background>
+        </Button>
+
 
     </Grid>
 </Window>
