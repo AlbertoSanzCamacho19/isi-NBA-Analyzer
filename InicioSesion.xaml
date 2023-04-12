@@ -1,0 +1,224 @@
+﻿<Window x:Class="NBA_Analyzer.InicioSesion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NBA_Analyzer"
+        mc:Ignorable="d"
+        Title="InicioSesion" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="420" MinHeight="450" Closed="Window_Closed" Closing="Window_Closing" Background="#FFC43C1E">
+    <Grid x:Name="Grid_Login" Grid.Column="1" Grid.Row="1" Background="#C43C1E" Visibility="Visible" Margin="0,0,-6.4,-1" MinWidth="800" MinHeight="420" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Height="421">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="logo_main" Height="109" Margin="358,0,356.2,335.8" Width="109" Source="Fotos/Logo2.png" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+
+        <Grid x:Name="Grid_Login1" Grid.Column="1" Grid.Row="1" Background="#FFCB65" Margin="242,108.4,250.2,54" HorizontalAlignment="Center" VerticalAlignment="Center" Height="282" Width="331">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtbox_usuario" Height="45" Margin="10,0,10,0" Grid.Row="2" 
+                     TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="txtbox_usuario_KeyDown" DragEnter="txtbox_usuario_DragEnter" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_usuario_lo" Width="30" Height="30" Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Introduce un usuario registrado"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="pss_contra" Margin="10,0,10,0" Grid.Row="4" 
+                         VerticalAlignment="Top" Height="45" VerticalContentAlignment="Center" KeyDown="pss_contra_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_contra_lo" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Contraseña incorrecta"/>
+            </Grid>
+            <Button x:Name="btn_acceder" Content="ACCEDER" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="6" 
+                    VerticalAlignment="Center" Width="130" Height="45" FontWeight="Bold" Click="btn_acceder_Click"  FontSize="18"/>
+
+            <Label Content="INICIAR SESIÓN"  Grid.Column="1" HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Row="0" 
+                   VerticalAlignment="Bottom" FontWeight="Bold"/>
+            <Label Content="Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <Label Content="Contraseña" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom"/>
+            <Button x:Name="btn_olvideContra" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" 
+                    VerticalAlignment="top" Cursor="Hand" Click="Btn_Contrasenia_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Light">
+                <TextBlock Text="Olvidé la contraseña" FontSize="12"/>
+            </Button>
+            <Button x:Name="btn_addUsuario" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" 
+                    VerticalAlignment="Bottom" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Click="btn_addUsuario_Click" FontSize="12" FontWeight="Light">
+                <TextBlock Text="Registrar Usuario" FontSize="12"/>
+            </Button>
+        </Grid>
+
+        <Grid x:Name="Grid_Contrasenia" Grid.Column="1"  Grid.Row="1" Background="#FFCB65" Margin="242,108.4,250.2,54" HorizontalAlignment="Center" VerticalAlignment="Center" Height="282" Width="331" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtbox_usuarioContra" Height="45" Margin="10,0,10,0" TextWrapping="Wrap" 
+                     VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="txtbox_usuarioContra_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_usuario_cc" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Introduce un usuario registrado"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="pss_nuevaContra" Margin="10,0,10,0"  
+                         VerticalAlignment="Top" Height="45" VerticalContentAlignment="Center" IsEnabled="False" KeyDown="pss_nuevaContra_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_contra_cc" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="La contraseña no puede estar vacía"/>
+            </Grid>
+            <Grid Grid.Row="6" Margin="0,0,140,0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="pss_codigo" Margin="10,0,10,0" VerticalAlignment="Top" Height="45" 
+                         VerticalContentAlignment="Center" Grid.RowSpan="2" IsEnabled="False" KeyDown="pss_codigo_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_codigo_cc" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Código incorrecto"/>
+            </Grid>
+            <Button x:Name="btn_cambiar" Content="CAMBIAR" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="6" 
+                    VerticalAlignment="Center" Width="130" Height="45" FontWeight="Bold" Click="btn_cambiar_Click" FontSize="18"/>
+
+            <Label Content="Cambiar Contraseña"  Grid.Column="1" HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Row="0" 
+                   VerticalAlignment="Bottom" FontWeight="Bold"/>
+            <Label Content="Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <Label Content="Nueva Contraseña" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom"/>
+            <Label Content="Código de Control" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <Button x:Name="btn_atras" HorizontalAlignment="Right" Margin="0,25,5,0" Grid.RowSpan="2"
+                    VerticalAlignment="Center" Width="50" Height="50" Click="btn_atras_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="fotos/atras2.png" Width="40" Height="40" ToolTip="Volver al login"/>
+            </Button>
+
+        </Grid>
+        <Grid x:Name="Grid_addUsuario_1" Grid.Column="1" Grid.Row="1" Background="#FFCB65" Margin="242,108.4,250.2,54" HorizontalAlignment="Center" VerticalAlignment="Center" Height="282" Width="331" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txt_nombre_AU" Height="45" Margin="10,0,10,0" 
+                     TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="txt_nombre_AU_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_nombre_au" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="El nombre no debe estar vacío"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txt_apellidos_AU" Margin="10,0,10,0" 
+                         VerticalAlignment="Top" Height="45" VerticalContentAlignment="Center" KeyDown="txt_apellidos_AU_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_apellidos_au" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Los apellidos no deben estar vacíos"/>
+            </Grid>
+            <Button x:Name="btn_siguiente" Content="Siguiente" HorizontalAlignment="Center" Margin="0,0,10,0" Grid.Row="6" 
+                    VerticalAlignment="Center" Width="130" Height="45" FontWeight="Bold" Click="btn_siguiente_Click"  FontSize="18"/>
+
+            <Label Content="Introduce los datos"  Grid.Column="1" HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Row="0" 
+                   VerticalAlignment="Bottom" FontWeight="Bold"/>
+            <Label Content="Nombre" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <Label Content="Apellidos" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom"/>
+            <Button x:Name="btn_atras_AU1" HorizontalAlignment="Right"  Margin="0,25,5,0" Grid.RowSpan="2"
+                    VerticalAlignment="Center" Width="50" Height="50" Click="btn_atras_AU1_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="fotos/atras2.png" Width="40" Height="40" ToolTip="Volver atrás"/>
+            </Button>
+        </Grid>
+        <Grid x:Name="Grid_addUsuario_2" Grid.Column="1" Grid.Row="1" Background="#FFCB65" Margin="242,108.4,250.2,54" HorizontalAlignment="Center" VerticalAlignment="Center" Height="282" Width="331" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txt_usuario_AU" Height="45" Margin="10,0,10,0" Grid.Row="2" TextWrapping="Wrap" 
+                     VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="txt_usuario_AU_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_usuario_au" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="El usuario no debe estar registrado o estar vacio"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="pss_Contra_AU" Margin="10,0,10,0"
+                         VerticalAlignment="Top" Height="45" VerticalContentAlignment="Center" KeyDown="pss_Contra_AU_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_contra_au" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="La contraseña no debe estar vacía"/>
+            </Grid>
+            <Grid Grid.Row="6" Margin="0,0,140,0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="pss_codigo_AU" Margin="10,0,10,0" VerticalAlignment="Top" Height="45"
+                         VerticalContentAlignment="Center" Grid.RowSpan="2" KeyDown="pss_codigo_AU_KeyDown" Background="#FFFCE3B2"/>
+                <Image x:Name="adv_codigo_au" Width="30" Height="30"  Visibility="Collapsed" Source="fotos/aviso.png" Grid.Column="1" Margin="0,0,10,0" ToolTip="Código incorrecto"/>
+            </Grid>
+            <Button x:Name="btn_registrar" Content="REGISTRAR" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="6" 
+                    VerticalAlignment="Center" Width="130" Height="45" FontWeight="Bold" Click="btn_registrar_Click"  FontSize="18"/>
+
+            <Label Content="Introduce los datos"  Grid.Column="1" HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Row="0" 
+                   VerticalAlignment="Bottom" FontWeight="Bold"/>
+            <Label Content="Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <Label Content="Contraseña" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom"/>
+            <Label Content="Código de Control" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <Button x:Name="btn_atras_AU2" HorizontalAlignment="Right"  Margin="0,25,5,0" Grid.RowSpan="2"
+                    VerticalAlignment="Center" Width="50" Height="50" Click="btn_atras_AU2_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="fotos/atras2.png" Width="40" Height="40" ToolTip="Volver atrás"/>
+            </Button>
+        </Grid>
+
+        <Label x:Name="lbl_logo" Grid.Column="1" HorizontalAlignment="Center" Height="60" Margin="0,0,0,240" Grid.RowSpan="2" VerticalAlignment="Center" Width="150" Background="Gray" Visibility="Hidden"/>
+        <Button x:Name="btn_ayuda" Margin="7,361,0,34" Grid.Row="1" Click="btn_ayuda_Click" Background="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Left" >
+            <Image x:Name="ima_ayuda" Source="fotos/ayuda2.png" Width="50" Height="50" ToolTip="Ayuda" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Button>
+    </Grid>
+</Window>

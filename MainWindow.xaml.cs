@@ -21,9 +21,11 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using static System.Net.WebRequestMethods;
 using NBA_Analyzer.API2;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using UserControl = System.Windows.Controls.UserControl;
+using Label = System.Windows.Controls.Label;
+using NBA_Analyzer.clases;
 
 namespace NBA_Analyzer
 {
@@ -37,9 +39,14 @@ namespace NBA_Analyzer
         public List<Jugador> lista_jugadores=new List<Jugador>();
         static HttpClient client = new HttpClient();
 
+        //labels
+        public static Label nombreUsuario;
+        public static Label apellidosUsuario;
+        public static Label ultimoInicio;
 
 
-        public MainWindow()
+
+        public MainWindow(InicioSesion inicioSesion)
         {
             InitializeComponent();
 
@@ -152,6 +159,13 @@ namespace NBA_Analyzer
         private void Jugadores_Click(object sender, RoutedEventArgs e)
         {
             OpenControl(new equipos(lista_jugadores, lista_equipos));
+        }
+
+        public static void asignarUSuario(Administrador a)
+        {
+            nombreUsuario.Content = a.Nombre;
+            apellidosUsuario.Content = a.Apellidos;
+            ultimoInicio.Content = a.UltimoAcceso.ToString();
         }
     }
 }

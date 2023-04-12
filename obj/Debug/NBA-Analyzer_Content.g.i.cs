@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("balon.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fichero/administradores.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fichero/codigoadmin.xml")]
 
 
